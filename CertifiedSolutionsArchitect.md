@@ -1,3 +1,3 @@
-#Certified Solutions Architect
+# Certified Solutions Architect
 
-##Study Notes
+## Study Notes
