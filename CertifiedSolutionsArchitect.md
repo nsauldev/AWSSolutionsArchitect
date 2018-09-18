@@ -1,8 +1,7 @@
-# Certified Solutions Architect
+# Certified Solutions Architect Study Notes
 
-## Study Notes
 
-## **EC2**
+## ![EC2](/images/EC2.png) EC2 - Elastic Compute Cloud
 
 EC2 101
 
@@ -78,7 +77,7 @@ EC2 has changed the economics of computing
   **I** - IOPS
 
   **G** - Graphics
-  
+
   **H** - High Disk Throughput
 
   **T** - Cheap General Purpose
@@ -94,6 +93,61 @@ EC2 has changed the economics of computing
   **P** - Graphics
 
   **X** - Extreme Memory
+
+#### Security Groups
+* Virutal Firewall
+* 1 instance can be a part of multiple security groups
+
+#### AMI Types
+* EBS or Instance Store
+  * Select:
+    * Region
+    * OS
+    * Architecture (32 bit or 64 bit)
+    * Launch Permissions
+    * Instance Store (Ephemeral Storage)
+    * EBS Backed
+
+* Instance Store
+  * Cannot stop the instance
+  * Root device defined by AMI
+* EBS Volumes
+  * Root device for instance is EBS
+
+#### Elastic Load Balancers
+* Virutal Appliance
+  * Balance load of traffic
+
+* **Types**
+  * Application Load Balancer (ALB)
+  * Network Load Balancer (NLB)
+  * Classic Load Balancer (CLB)
+
+* Application Load Balancer
+  * Best suited for HTTP & HTTPS
+  * OSI Layer 7 application-ware
+  * Intelligent routing decisions
+
+* Network Load Balancer
+  * Best for TCP/Exterme Performance
+  * Layer 4 connection
+  * Can handle millions of requests per second
+
+* Classic Load Balancer
+  * Legacy Elastic Load Balancer
+  * Layer 7 specific functions
+    * X-Forward
+    * Sticky Sessions
+  * Layer 4 load balancer
+
+If you get a 504 error:
+  * Applicaiton is having issues
+  * Web Server or Database are having issues
+  * Determine where it is failing
+
+X-Forward-For-Header
+  * Take IP (Public IP) > Classic Load Balancer (Private IP) > EC2 (Public IP) {X-Forwarded-For-Header}
+
 
 
 ## **EBS - Elastic Block Storage**
@@ -130,16 +184,24 @@ EC2 has changed the economics of computing
 ## **Exam Tips**
 
 ### **EC2**
-
 * Remember pricing models
-
 * Spot instances
   * If terminated by Amazon, you will not be charged
   * If terminated by you, charged full hour
-
 * Remember types of instances - FIGHTDRMCPX
+* Instance store = Ephemeral storage
+* Instance store volumes cannot be stopped. If host failes the data is lost.
+* EBS volumes can be stopped
+* Both can be rebooted with no data loss
+* By default, root volume is deleted on instance termination
+  * EBS volumes can be kept if needed
+
+#### Elastic Load Balancer
+* 3 types of LBs
+* If you see Elastic Load Balancer = Classic Load Balancer
+* 504 error means gateway timed out
+* IPv4 end user, look for the X-Forwarded-For-Header
 
 ### **EBS**
-
 * SSD
 * Magnetic 
